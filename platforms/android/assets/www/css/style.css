@@ -1,0 +1,40 @@
+/* Empty. Add your own CSS if you like */
+
+.main {
+
+    background-image: url(../img/b2.gif);
+    background-repeat: no-repeat;
+    -webkit-background-size: 1000px, cover;
+	-moz-background-size: 1000px, cover;
+	-o-background-size: 1000px, cover;
+    background-position: center;
+    width: 100%;*/
+    height: 1200px;
+    /*margin: auto;*/
+    /*z-index: 2;*/
+    padding:0px;
+    background-position: fixed;
+}
+
+.button-positive{
+	width: 100px;
+	left: 300px;
+}
+.maintext {
+    color: white;
+}
+textarea{
+    border: 2px solid;
+    width: 500px;
+    height: 200px;
+}
+
+.center{
+border: 2px solid;
+
+}
+
+.buttons{
+margin: 50px;
+
+}

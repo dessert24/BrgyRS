@@ -1,0 +1,24 @@
+
+
+.maintext {
+    color: white;
+}
+textarea{
+    border: 2px solid;
+    width: 100%;
+    height: 150px;
+}
+
+.center{
+border: 2px solid;
+
+}
+
+.buttons{
+padding: 10px;
+border: think solid black;
+}
+
+.mainBtn{
+    margin-top:130px;
+}

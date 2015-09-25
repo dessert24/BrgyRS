@@ -1,0 +1,53 @@
+      
+      <ion-view view-title="Barangay Clearance">
+
+        <ion-content padding="true">
+
+        <div class="list">
+            <label class="item item-input item-stacked-label" >
+              <span class="input-label">First Name</span>
+              <input type="text" placeholder="John" ng-model="data.name" required>
+            </label>
+
+            <label class="item item-input item-stacked-label">
+               <span class="input-label">Age</span>
+            <input type="text" placeholder="25" ng-model="data.age" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+              
+            </label>
+
+            <label class="item item-input item-select">
+          <div class="input-label">
+            Sex
+          </div>
+          <select name='options' ng-model="model.prefGender"
+                  ng-options="gender as gender.name for gender in preferences">
+          </select>
+        </label>
+
+            <label class="item item-input item-stacked-label">
+               <span class="input-label">Civil Status</span>
+              <input type="text" placeholder="Single/Married/Widowed/Divorced/Separated" ng-model="data.CS" required>
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Place of Birth</span>
+              <input type="text" placeholder="Cagayan de Oro City" ng-model="data.PoB" required>
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Presently Residing at</span>
+              <input type="text" placeholder="Zone 2 Poblacion Tagoloan Misamis Oriental" ng-model="data.residence" required>
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Purpose</span>
+              <input type="text" placeholder="Trisikad Renewal" ng-model="data.purpose" required>
+            </label>
+          </div>
+
+          <div class="padding">
+           <button class="button button-full button-dark" ng-click="showAlert()"> SUBMIT </button> 
+          </div>
+
+          
+            
+          
+        </ion-content>
+      </ion-view>

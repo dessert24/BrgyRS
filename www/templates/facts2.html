@@ -1,0 +1,64 @@
+ <ion-view view-title="Brgy. Bussiness Clearance">
+        <ion-content padding="true">
+
+        <div class="list">
+          <label class="item item-input item-stacked-label">
+              <span class="input-label">Name</span>
+              <input type="text" placeholder="John" ng-model="user.name">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Nature of Business</span>
+              <input type="text" placeholder="Trisikad" ng-model="user.nameBusiness">
+            </label> 
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Address of Business</span>
+              <input type="text" placeholder="Zone 1 POblacion Tag. Mis. Or." ng-model="user.addressBusiness">
+            </label> 
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Name of Owner</span>
+              <input type="text" placeholder="John dela cruz" ng-model="user.nameOwner">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Age </span>
+             <input type="text" placeholder="30" ng-model="user.age" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+            </label>
+
+           <label class="item item-input item-select">
+          <div class="input-label">Sex</div>
+          <select name='options' ng-model="model.prefGender"
+                  ng-options="gender as gender.name for gender in preferences">
+          </select>
+        </label>
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Civil Status</span>
+              <input type="text" placeholder="Married" ng-model="user.civilStatus">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Place of Birth</span>
+              <input type="text" placeholder="Cdoc" ng-model="user.placeBirth">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Presently Residing at</span>
+              <input type="text" placeholder="poblacion, Tag. Mis Or." ng-model="user.presentlyResiding">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Purpose</span>
+              <input type="text" placeholder="Purpose" ng-model="user.purpose">
+            </label>
+
+          </div>
+
+          <div class="padding">
+           <button class="button button-full button-dark" ng-click="facts2Alert()"> SUBMIT </button> 
+          </div>
+
+        </ion-content>
+      </ion-view>
