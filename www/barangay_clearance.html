@@ -1,0 +1,60 @@
+      
+      <ion-view view-title="Barangay Clearance">
+
+        <ion-content padding="true">
+
+        <div class="list">
+           <form role="form" ng-submit="barangay_clearance_add()">
+
+            <label class="item item-input item-stacked-label" >
+              <span class="input-label">Name</span>
+              <input type="text" placeholder="John" ng-model="form_barangay_clearance.name" required>
+            </label>
+
+            <label class="item item-input item-stacked-label">
+               <span class="input-label">Age</span>
+            <input type="text" placeholder="25" ng-model="form_barangay_clearance.age" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+              
+            </label>
+
+           <label class="item item-input item-select">
+          <div class="input-label">Sex</div>
+          <select name='options' ng-model="formData.sex">
+                  <option>Male</option>
+                  <option>Female</option>
+          </select>
+        </label>
+
+            <label class="item item-input item-select">
+          <div class="input-label">Civil Status</div>
+          <select name='options' ng-model="formData.civil_status">
+                  <option>Single</option>
+                  <option>Married</option>
+                  <option>Widowed</option>
+                  <option>Separated</option>
+          </select>
+        </label>
+        
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Place of Birth</span>
+              <input type="text" placeholder="Cagayan de Oro City" ng-model="form_barangay_clearance.pob" required>
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Presently Residing at</span>
+              <input type="text" placeholder="Zone 2 Poblacion Tagoloan Misamis Oriental" ng-model="form_barangay_clearance.residence" required>
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Purpose</span>
+              <input type="text" placeholder="Trisikad Renewal" ng-model="form_barangay_clearance.purpose" required>
+            </label>
+         
+
+          <div class="padding">
+           <button class="button button-full button-dark"> SUBMIT </button> 
+          </div>
+</form>
+          
+          </div>   
+          
+        </ion-content>
+      </ion-view>
