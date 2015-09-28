@@ -1,0 +1,81 @@
+ <ion-view view-title="Brgy. Bussiness Clearance">
+        <ion-content padding="true">
+
+        <div class="list">
+       
+
+          <form role="form" ng-submit="addTask()">
+            
+          <label class="item item-input item-stacked-label">
+              <span class="input-label">Name</span>
+              <input type="text" placeholder="John" ng-model="formData.name">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Nature of Business</span>
+              <input type="text" placeholder="Trisikad" ng-model="formData.nob">
+            </label> 
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Address of Business</span>
+              <input type="text" placeholder="Zone 1 POblacion Tag. Mis. Or." ng-model="formData.aob">
+            </label> 
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Name of Owner</span>
+              <input type="text" placeholder="John dela cruz" ng-model="formData.name_of_owner">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Age </span>
+             <input type="text" placeholder="30" ng-model="formData.age" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+            </label>
+
+           <label class="item item-input item-select">
+          <div class="input-label">Sex</div>
+          <select name='options' ng-model="formData.sex">
+                  <option>Male</option>
+                  <option>Female</option>
+          </select>
+        </label>
+
+            <!-- <label class="item item-input item-stacked-label">
+              <span class="input-label">Civil Status</span>
+              <input type="text" placeholder="Married" ng-model="formData.civil_status">
+            </label> -->
+
+             <label class="item item-input item-select">
+          <div class="input-label">Civil Status</div>
+          <select name='options' ng-model="formData.civil_status">
+                  <option>Single</option>
+                  <option>Married</option>
+                  <option>Widowed</option>
+                  <option>Separated</option>
+          </select>
+        </label>
+
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Place of Birth</span>
+              <input type="text" placeholder="Cdoc" ng-model="formData.pob">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Presently Residing at</span>
+              <input type="text" placeholder="poblacion, Tag. Mis Or." ng-model="formData.residence">
+            </label>
+
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Purpose</span>
+              <input type="text" placeholder="Purpose" ng-model="formData.purpose">
+            </label>
+
+          
+
+          <div class="padding">
+           <button class="button button-full button-dark" type="submit"> SUBMIT </button> 
+          </div>
+</form>
+</div>
+        </ion-content>
+      </ion-view>
