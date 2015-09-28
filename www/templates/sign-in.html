@@ -1,27 +1,28 @@
 <ion-view view-title="Sign-In">
         <ion-content>
 
+       <form name="loginForm" class="form-horizontal" role="form">
           <div class="list">
             <label class="item item-input">
-              <span class="input-label">Username</span>
-              <input type="text" ng-model="user.username">
+              <span class="input-label">Email/Phone</span>
+            <input type="text" class="form-control" placeholder="brs@yahoo.com / 0912345678"  ng-model="login.email" required focus/>
             </label>
             <label class="item item-input">
               <span class="input-label">Password</span>
-              <input type="password" ng-model="user.password">
+              <input type="password" class="form-control" placeholder="********" ng-model="login.password" required/>
             </label>
           </div>
 
           <div class="padding">
-            <button class="button button-block button-dark" ng-click="signIn()">
+            <button type="submit" class="button button-block button-dark" ng-click="doLogin(login)" data-ng-disabled="loginForm.$invalid">
               Sign-In
             </button>
             
             <p class="text-center">
-              <a href="#/forgot-password">Forgot password</a>
+             Don't have an account? <a href="#/sign-up">Signup</a>
             </p>
 
           </div>
-
+  </form>
         </ion-content>
       </ion-view>
