@@ -1,27 +1,43 @@
 <ion-view view-title="Sign-In">
         <ion-content>
-
+<form name="signupForm" class="form-horizontal" role="form">
           <div class="list">
+             
+
             <label class="item item-input">
               <span class="input-label">Username</span>
-              <input type="text" ng-model="user.username">
+              <!-- <input type="text" class="form-control" placeholder="Name" ng-model="signup.name" /> -->
+               <input type="text" class="form-control" placeholder="Name" ng-model="signup.name" />
             </label>
+
+             <label class="item item-input">
+              <span class="input-label">Email</span>
+              <input type="text" class="form-control" placeholder="Email" name="email" ng-model="signup.email" focus/>
+              <!-- <input type="email"  ng-model="signup.email" focus/> -->
+            </label> 
+
+            <label class="item item-input">
+              <span class="input-label">Phone</span>
+             <input type="text"  placeholder="Phone" name="phone" ng-model="signup.phone"/>
+              <!-- <input type="password" ng-model="signup.password" required/> -->
+            </label>
+
             <label class="item item-input">
               <span class="input-label">Password</span>
-              <input type="password" ng-model="user.password">
+              <input type="password" ng-model="signup.password" required/>
             </label>
-          </div>
+         
 
           <div class="padding">
-            <button class="button button-block button-dark" ng-click="signIn()">
-              Sign-In
+            <button type="submit" class="button button-block button-dark"  ng-click="signUp(signup)" data-ng-disabled="signupForm.$invalid" >
+              Create Account
             </button>
-            
-            <p class="text-center">
-              <a href="#/forgot-password">Forgot password</a>
-            </p>
 
+        
           </div>
+    
 
+     </div>
+   </form>
         </ion-content>
       </ion-view>

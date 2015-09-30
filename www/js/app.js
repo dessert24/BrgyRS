@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic','starter.controllers'])
+var starter = angular.module('starter', ['ionic','starter.controllers','toaster'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -23,29 +23,23 @@ angular.module('starter', ['ionic','starter.controllers'])
 
   $stateProvider
 
-   .state('main', {
-      url: '/main',
-      templateUrl: 'templates/main.html'
-    })
-   .state('signup', {
-      url: '/sign-up',
-      templateUrl: 'templates/sign-up.html',
-      controller: 'SignUpCtrl'
-    })
-
-    .state('signin', {
+ .state('signin', {
       url: '/sign-in',
       templateUrl: 'templates/sign-in.html',
       controller: 'SignInCtrl'
     })
 
 
-
-    .state('forgotpassword', {
-      url: '/forgot-password',
-      templateUrl: 'templates/forgot-password.html'
+   .state('signup', {
+      url: '/sign-up',
+      templateUrl: 'templates/sign-up.html',
+      controller: 'SignUpCtrl'
     })
 
+    .state('Logout', {
+      url: '/logout',
+      templateUrl: 'templates/sign-in.html',
+            })
     
 
     .state('tabs', {
@@ -59,27 +53,27 @@ angular.module('starter', ['ionic','starter.controllers'])
       views: {
         'home-tab': {
           templateUrl: 'templates/home.html',
-          controller: 'HomeTabCtrl'
+          // controller: 'HomeTabCtrl'
         }
       }
     })
 
-    .state('tabs.facts', {
-      url: '/facts',
+    .state('tabs.barangay_clearance', {
+      url: '/barangay_clearance',
       views: {
         'home-tab': {
-          templateUrl: 'templates/facts.html',
+          templateUrl: 'templates/barangay_clearance.html',
           controller: 'PopupCtrl'
         }
       }
     })
 
-    .state('tabs.facts2', {
-      url: '/facts2',
+    .state('tabs.business_clearance', {
+      url: '/business_clearance',
       views: {
         'home-tab': {
-          templateUrl: 'templates/facts2.html',
-          controller: 'facts2'
+          templateUrl: 'templates/business_clearance.html',
+          controller: 'business_clearance'
         }
       }
     })
@@ -128,7 +122,7 @@ angular.module('starter', ['ionic','starter.controllers'])
     });
 
 
-   $urlRouterProvider.otherwise('/main');
+   $urlRouterProvider.otherwise('/sign-in');
 
 })
 
@@ -136,3 +130,23 @@ angular.module('starter', ['ionic','starter.controllers'])
 
  
  
+// .run(function ($rootScope, $location, Data) {
+        // $rootScope.$on("$routeChangeStart", function (event, next, current) {
+            // $rootScope.authenticated = false;
+            // Data.get('session').then(function (results) {
+                // if (results.uid) {
+                    // $rootScope.authenticated = true;
+                    // $rootScope.uid = results.uid;
+                    // $rootScope.username = results.username;
+                    // $rootScope.email = results.email;
+                // } else {
+                    // var nextUrl = next.$$route.originalPath;
+                    // if (nextUrl == '/signup' || nextUrl == '/login') {
+// 
+                    // } else {
+                        // $location.path("/login");
+                    // }
+                // }
+            // });
+        // });
+    // });
