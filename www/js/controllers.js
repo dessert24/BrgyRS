@@ -148,7 +148,7 @@ starter.controller('business_clearance',function($scope, $ionicPopup, $timeout, 
 });
 
 
-starter.controller('facts3',function($scope, $ionicPopup, $timeout) {
+starter.controller('brgy_permit',function($scope, $ionicPopup, $timeout) {
 
    $scope.facts3Alert = function() {
      var alertPopup = $ionicPopup.alert({
@@ -159,7 +159,7 @@ starter.controller('facts3',function($scope, $ionicPopup, $timeout) {
    };
 });
 
-starter.controller('facts4',function($scope, $ionicPopup, $timeout) {
+starter.controller('complaints',function($scope, $ionicPopup, $timeout) {
 
    $scope.facts4Alert = function() {
      var alertPopup = $ionicPopup.alert({

@@ -78,21 +78,21 @@ var starter = angular.module('starter', ['ionic','starter.controllers','toaster'
       }
     })
 
-    .state('tabs.facts3', {
-      url: '/facts3',
+    .state('tabs.brgy_permit', {
+      url: '/brgy_permit',
       views: {
         'home-tab': {
-          templateUrl: 'templates/facts3.html',
-          controller: 'facts3'
+          templateUrl: 'templates/brgy_permit.html',
+          controller: 'brgy_permit'
         }
       }
     })
-    .state('tabs.facts4', {
-      url: '/facts4',
+    .state('tabs.complaints', {
+      url: '/complaints',
       views: {
         'home-tab': {
-          templateUrl: 'templates/facts4.html',
-          controller: 'facts4'
+          templateUrl: 'templates/complaints.html',
+          controller: 'complaints'
         }
       }
     })
