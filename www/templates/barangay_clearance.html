@@ -4,7 +4,7 @@
         <ion-content padding="true">
 
         <div class="list">
-           <form role="form" ng-submit="barangay_clearance_add()">
+           <form role="form2" ng-submit="barangay_clearance_add()">
 
             <label class="item item-input item-stacked-label" >
               <span class="input-label">Name</span>
@@ -19,7 +19,7 @@
 
            <label class="item item-input item-select">
           <div class="input-label">Sex</div>
-          <select name='options' ng-model="formData.sex">
+          <select name='options' ng-model="form_barangay_clearance.sex">
                   <option>Male</option>
                   <option>Female</option>
           </select>
@@ -27,7 +27,7 @@
 
             <label class="item item-input item-select">
           <div class="input-label">Civil Status</div>
-          <select name='options' ng-model="formData.civil_status">
+          <select name='options' ng-model="form_barangay_clearance.civil_status">
                   <option>Single</option>
                   <option>Married</option>
                   <option>Widowed</option>
