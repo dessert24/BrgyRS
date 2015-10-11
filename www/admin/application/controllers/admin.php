@@ -4,10 +4,7 @@
 	{
 		private $response = '';
 		private $msg = '';
-		private $newCategory = false;
-		private $newBrand = false;
 		private $post = array('firstName' => '' , 'middleName' => '' , 'lastName' => '' , 'emailAdd' => '' , 'contactNumber' => '' , 'homeAdd' => '');
-		private $newForum = false;
 
 		public function __construct()
 		{
@@ -31,28 +28,16 @@
                             </center>' , 'accountID' => $this->session->userdata('accountID')));
 		}
 
+//**************************************Barngay Clearance*************************************************
 		public function barangay_clearance()
 		{
 			$this->load->view('admin/barangay_clearance' , array('title' => 'Barangay Clearance | Barangay Registration' , 'accountID' => $this->session->userdata('accountID') ));
 		}
-
-		public function barangay_permit()
+// Barangay Clearance Search
+		public function BCsearch()
 		{
-			$this->load->view('admin/barangay_permit' , array('title' => 'Barangay Permit | Barangay Registration' , 'accountID' => $this->session->userdata('accountID') ));
+			$this->load->view('admin/barangay_clearance_search' , array('title' => 'Barangay Clearance |Barangay Registration' , 'accountID' => $this->session->userdata('accountID') , 'response' => $this->response , 'name' => $this->input->post(NULL , TRUE)));
 		}
-
-
-		public function business_clearance()
-		{
-			$this->load->view('admin/business_clearance' , array('title' => 'Barangay Business Clearance | Barangay Registration' , 'accountID' => $this->session->userdata('accountID') ));
-		}
-
-		public function complaints()
-		{
-			$this->load->view('admin/complaints' , array('title' => 'complaints | Barangay Registration' , 'accountID' => $this->session->userdata('accountID') ));
-		}
-
-	// Delete data
 
 		public function deleteProduct($id)
 		{
@@ -64,24 +49,87 @@
             $this->barangay_clearance();
 		}
 
-		public function deleteBusinessClearance($id)
+		public function update($id)
 		{
-			$this->admin_model->deleteBusinessClearance($id);
-			$this->response = '
-                              <div class="alert alert-success alert-dismissable" >
-                                <button class="close" area-hidden="true" data-dismiss="alert" type="button">x</button><i class="fa fa-check " style="margin-right:5px;"></i>Business Clearance Details Deleted
-                              </div>';
-            $this->business_clearance();
+			$this->load->view('admin/update' , array('title' => 'Update |Barangay Registration' , 'accountID' => $this->session->userdata('accountID') , 'response' => $this->response , 'id' => $id));
 		}
 
-		public function deleteComplaints($id)
+		public function BCUpdate($id)
 		{
-			$this->admin_model->deleteComplaints($id);
-			$this->response = '
-                              <div class="alert alert-success alert-dismissable" >
-                                <button class="close" area-hidden="true" data-dismiss="alert" type="button">x</button><i class="fa fa-check " style="margin-right:5px;"></i>Complaints Details Deleted
+			$validate = array(
+				array(
+					'field' => 'name',
+					'label' => 'Name',
+					'rules' => 'required'
+				),
+				array(
+					'field' => 'age',
+					'label' => 'Age',
+					'rules' => 'required|int'
+				),
+				array(
+					'field' => 'sex',
+					'label' => 'Sex',
+					'rules' => 'required'
+				),
+				array(
+					'field' => 'residence',
+					'label' => 'Residence',
+					'rules' => 'required'
+				)
+			);
+
+			$this->form_validation->set_rules($validate);
+			$result = $this->input->post(NULL , TRUE);
+
+			if($this->form_validation->run())
+			{
+				if(empty($_FILES['File']['name']))
+				{
+					$this->admin_model->BCUpdate($id , $result);
+					$this->response = '<div class="alert alert-success alert-dismissable" >
+                                <button class="close" area-hidden="true" data-dismiss="alert" type="button">x</button><i class="fa fa-check" style="margin-right:5px;"></i>Successfully Updated
                               </div>';
-            $this->complaints();
+                	$this->update($id);
+				}
+				elseif(!empty($_FILES['File']['name']))
+				{
+					$details = array(
+						'fileName' => $_FILES['File']['name'],
+						'result' => $this->input->post(NULL , TRUE)
+					);
+
+					if(is_uploaded_file($_FILES['File']['tmp_name']))
+						move_uploaded_file($_FILES['File']['tmp_name'], 'C:/wampp/www/brs/www/admin/bootstrap/images/'.$_FILES['File']['name'].'');
+						$this->admin_model->BCUpdate($id , $details);
+						$this->response = '<div class="alert alert-success alert-dismissable" >
+                                <button class="close" area-hidden="true" data-dismiss="alert" type="button">x</button><i class="fa fa-check" style="margin-right:5px;"></i>Successfully Updated
+                              </div>';
+                		$this->update($id);
+				}
+			}
+			else
+			{
+				$this->response = '<div class="alert alert-danger alert-dismissable" >
+                                <button class="close" area-hidden="true" data-dismiss="alert" type="button">x</button><i class="fa fa-warning" style="margin-right:5px;"></i>Failed to update
+                              </div>';
+                $this->update($id);
+			}
+		}
+
+//**************************************Barngay Clearance*************************************************
+
+
+//**************************************Barngay Permit*************************************************
+
+		public function barangay_permit()
+		{
+			$this->load->view('admin/barangay_permit' , array('title' => 'Barangay Permit | Barangay Registration' , 'accountID' => $this->session->userdata('accountID') ));
+		}
+
+			public function BPsearch()
+		{
+			$this->load->view('admin/barangay_permit_search' , array('title' => 'Barangay Permit |Barangay Registration' , 'accountID' => $this->session->userdata('accountID') , 'response' => $this->response , 'name' => $this->input->post(NULL , TRUE)));
 		}
 
 		public function deleteBrgyPermit($id)
@@ -94,7 +142,59 @@
             $this->deleteBrgyPermit();
 		}
 
-// Delete data
+//**************************************Barngay Permit*************************************************
+
+
+//************************************** Business Clearance*************************************************
+		public function business_clearance()
+		{
+			$this->load->view('admin/business_clearance' , array('title' => 'Barangay Business Clearance | Barangay Registration' , 'accountID' => $this->session->userdata('accountID') ));
+		}
+
+		public function BusClearsearch()
+		{
+			$this->load->view('admin/business_clearance_search' , array('title' => 'Barangay Business Clearance |Barangay Registration' , 'accountID' => $this->session->userdata('accountID') , 'response' => $this->response , 'name' => $this->input->post(NULL , TRUE)));
+		}
+
+		public function deleteBusinessClearance($id)
+		{
+			$this->admin_model->deleteBusinessClearance($id);
+			$this->response = '
+                              <div class="alert alert-success alert-dismissable" >
+                                <button class="close" area-hidden="true" data-dismiss="alert" type="button">x</button><i class="fa fa-check " style="margin-right:5px;"></i>Business Clearance Details Deleted
+                              </div>';
+            $this->business_clearance();
+		}
+//**************************************Business Clearance*************************************************
+
+
+//**************************************Complaints*************************************************
+		public function complaints()
+		{
+			$this->load->view('admin/complaints' , array('title' => 'complaints | Barangay Registration' , 'accountID' => $this->session->userdata('accountID') ));
+		}
+
+		public function Complaintsearch()
+		{
+			$this->load->view('admin/complaints_search' , array('title' => 'Complaints |Barangay Registration' , 'accountID' => $this->session->userdata('accountID') , 'response' => $this->response , 'id' => $this->input->post(NULL , TRUE)));
+		}
+
+
+		public function deleteComplaints($id)
+		{
+			$this->admin_model->deleteComplaints($id);
+			$this->response = '
+                              <div class="alert alert-success alert-dismissable" >
+                                <button class="close" area-hidden="true" data-dismiss="alert" type="button">x</button><i class="fa fa-check " style="margin-right:5px;"></i>Complaints Details Deleted
+                              </div>';
+            $this->complaints();
+		}
+//**************************************Complaints*************************************************
+
+
+	
+		
+
 
 		// USER
 
@@ -191,10 +291,6 @@
 
 		// USER
 
-		public function productSearch()
-		{
-			$this->load->view('admin/productSearch' , array('title' => 'Barangay Clearance |Barangay Registration' , 'accountID' => $this->session->userdata('accountID') , 'response' => $this->response , 'name' => $this->input->post(NULL , TRUE)));
-		}
 
 		public function myAccount()
 		{
@@ -353,6 +449,10 @@
 		}
 // Account Search
 		public function accountSearch()
+		{
+			$this->load->view('admin/AdminSearch' , array('title' => 'Users | Barangay Registration' , 'accountID' => $this->session->userdata('accountID') , 'response' => $this->response , 'data' => $this->input->post(NULL , TRUE)));
+		}
+		public function customerSearch()
 		{
 			$this->load->view('admin/userSearch' , array('title' => 'Users | Barangay Registration' , 'accountID' => $this->session->userdata('accountID') , 'response' => $this->response , 'data' => $this->input->post(NULL , TRUE)));
 		}

@@ -4,7 +4,6 @@
 	{
 		private $response = '';
 		private $post = array('firstName' => '' , 'middleName' => '' , 'lastName' => '' , 'emailAdd' => '' , 'contactNumber' => '' , 'homeAdd' => '');
-		private $cart = false;
 
 		public function __construct()
 		{
@@ -17,12 +16,12 @@
 
 		public function index()
 		{
-			$this->load->view('index' , array('title' => 'Shop Online | Store Tech' , 'response' => $this->response));
+			$this->load->view('index' , array('title' => 'Admin | Barangay Registration' , 'response' => $this->response));
 		}
 
 		public function createAccount()
 		{
-			$this->load->view('createAccount' , array('title' => 'Create Account | Store Tech' , 'response' => $this->response , 'post' => $this->post));
+			$this->load->view('createAccount' , array('title' => 'Create Account | Barangay Registration' , 'response' => $this->response , 'post' => $this->post));
 		}
 
 		public function newAccount()

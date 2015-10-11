@@ -23,7 +23,7 @@
         <?php if(!empty($response)) echo $response; ?>
 
         <!-- Main content -->
-        <a href="<?php echo base_url('index.php/admin/users'); ?>"><i class="fa fa-arrow-left pull-right" style="margin-right:5px;"></i></a><br><br>
+        <a href="<?php echo base_url('index.php/admin/users'); ?>"><i class="fa fa-arrow-left pull-right" style="margin-right:5px;"> Back</i></a><br><br>
         <section class="content">
           <div class="row">
             <div class="col-md-8">
@@ -31,7 +31,7 @@
               <a href="<?php echo base_url('index.php/admin/newUser'); ?>"><small><i class="fa fa-plus" style="margin-right:5px;"></i>User</small></a>
             </div>
             <div class="col-md-4 pull-right">
-              <form action="<?php echo base_url('index.php/admin/accountSearch'); ?>" method="POST">
+              <form action="<?php echo base_url('index.php/admin/customerSearch'); ?>" method="POST">
                 <div class="input-group">
                   <input type="text" name="name" class="form-control" placeholder="Search Name"/>
                   <span class="input-group-btn">
@@ -62,36 +62,23 @@
                 <ul>
                   <table width="100%">
                     <tr>
-                      <td align="center"><b>Account ID</b></td>
+                      <td align="center"><b>User ID</b></td>
                       <td align="center"><b>Fullname</b></td>
-                      <td align="center"><b>Gender</b></td>
-                      <td align="center"><b>Status</b></td>
-                      <td align="center"><b>Type</b></td>
-                      <td align="center"><b>Actions</b></td>
+                      <td align="center"><b>Email</b></td>
+                      <td align="center"><b>Phone</b></td>
+                      <td align="center"><b>Created</b></td>
                     </tr>
                     <tr><td><div class="row"></div></td></tr>
                     <?php foreach($admin->admin_model->getSearchUsers($data['name']) as $row) { ?>
                     <tr><td><br></td></tr>
                     <tr>
-                      <td align="center"><?php echo $row->Account_ID; ?></td>
-                      <td align="center"><?php echo $row->Firstname .' '. $row->Lastname; ?></td>
-                      <td align="center"><?php echo $row->Gender; ?></td>
-                      <td align="center"><?php echo $row->Status; ?></td>
-                      <td align="center"><?php echo $row->Type; ?></td>
+                      <td align="center"><?php echo $row->uid; ?></td>
+                      <td align="center"><?php echo $row->name; ?></td>
+                      <td align="center"><?php echo $row->email; ?></td>
+                      <td align="center"><?php echo $row->phone; ?></td>
+                      <td align="center"><?php echo $row->created; ?></td>
                       <td align="center">
-                        <a href="<?php echo base_url('index.php/admin/updateUser/'.$row->Account_ID.''); ?>"><i class="fa fa-edit" style="margin-right:10px;"></i></a>
-                        <?php 
-                          if($row->Status == 'Active')
-                          {
-                            $status = 'Inactive';
-                            echo '<a href="'.base_url('index.php/admin/updateAccountStatus/'.$row->Account_ID.'/'.$status.'').'"><i class="fa fa-toggle-on" style="margin-right:5px;"></i></a>';
-                          }
-                          else
-                          {
-                            $status = 'Active';
-                            echo '<a href="'.base_url('index.php/admin/updateAccountStatus/'.$row->Account_ID.'/'.$status.'').'"><i class="fa fa-toggle-off" style="margin-right:5px;"></i></a>';
-                          }
-                        ?>
+                    
                       </td>
                     </tr>
                   <?php } ?>

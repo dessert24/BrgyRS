@@ -12,131 +12,133 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            <i class="fa fa-gears" style="margin-right:5px;"></i>Users
-            <small>New User</small>
+            <i class="fa fa-barcode" style="margin-right:5px;"></i>Barangay Clearance
+            <small>Update Registered</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">New User</li>
+            <li class="active">Update Registered</li>
           </ol>
         </section><br>
         <?php if(!empty($response)) echo $response; ?>
 
         <!-- Main content -->
-        <a href="<?php echo base_url('index.php/admin/users'); ?>"><i class="fa fa-arrow-left pull-right" style="margin-right:5px;"></i></a><br><br>
+        <a href="<?php echo base_url('index.php/admin/barangay_clearance'); ?>"><i class="fa fa-arrow-left pull-right" style="margin-right:5px;"> Back</i></a><br><br>
         <section class="content">
           <div class="row">
             <div class="col-md-8">
-              <h4 class="box-title">New User</h4><br><br>
+              <h4 class="box-title">Update Registered</h4>
+            </div>
+            <div class="col-md-4 pull-right">
+              <form action="#" method="get">
+                <div class="input-group">
+                  <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                  <span class="input-group-btn">
+                    <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                  </span>
+                </div>
+              </form>
             </div>
           </div>
-            <ul>
+          <div class="row">
+            <div class="col-md-12">
+              <br><br><br>
+            </div>
+          </div>
+          <ul>
+          <?php foreach($admin->admin_model->getBrgyClearanceDetails($id) as $row) { ?>
+          
+           <form action="<?php echo base_url('index.php/admin/BCUpdate/'.$row->id.''); ?>" method="POST" enctype="multipart/form-data"> 
               <table width="100%">
-                          <form action="<?php echo base_url('index.php/admin/addUser'); ?>" method="POST" enctype="multipart/form-data">
-                            <tr>
-                              <td valign="top">
-                                <div class="row">
-                                  <div class="col-md-12">
-                                    <img src="<?php echo base_url('bootstrap/images/dummy.png'); ?>" width="200" height="200">
-                                    <input type="file" name="userFile" required/>
-                                  </div>
-                                </div>
-                              </td>
-                              <td valign="top">
-                                <ul>
-                                  <div class="row">
-                                    <div class="col-md-12">
-                                      <h4 class="box-title">Personal Informations</h4><hr>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-4">
-                                      <label for="firstName">Firstname</label>
-                                      <input type="text" name="firstName" value="<?php echo $post['firstName']; ?>" class="form-control" />
-                                      <?php echo form_error('firstName'); ?>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <label for="middleName">Middlename</label>
-                                      <input type="text" name="middleName" value="<?php echo $post['middleName']; ?>" class="form-control" />
-                                      <?php echo form_error('middleName'); ?>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <label for="lastName">Lastname</label>
-                                      <input type="text" name="lastName" value="<?php echo $post['lastName']; ?>" class="form-control" /><br>
-                                      <?php echo form_error('lastName'); ?>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <label for="gender">Gender</label>
-                                      <select name="gender" id="gender" class="form-control">
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                        <option>Other</option>
-                                      </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <label for="type">Type</label>
-                                      <select name="type" id="type" class="form-control">
-                                        <option>Admin</option>
-                                        <option>Customer</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-12">
-                                      <br>
-                                      <h4 class="box-title">Contact Informations</h4><hr>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-4">
-                                      <label for="emailAdd">Email Address</label>
-                                      <input type="text" id="emailAdd" value="<?php echo $post['emailAdd']; ?>" name="emailAdd" class="form-control" />
-                                      <?php echo form_error('emailAdd'); ?>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <label for="contactNumber">Contact Number</label>
-                                      <input type="text" id="contactNumber" value="<?php echo $post['contactNumber']; ?>" name="contactNumber" class="form-control" />
-                                      <?php echo form_error('contactNumber'); ?>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <label for="homeAdd">Home Address</label>
-                                      <input type="text" id="homeAdd" value="<?php echo $post['homeAdd']; ?>" name="homeAdd" class="form-control" />
-                                      <?php echo form_error('homeAdd'); ?>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-12">
-                                      <h4 class="box-title">Account Security</h4><hr>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-4">
-                                      <label for="password">Password</label>
-                                      <input type="password" id="password" name="password" placeholder="Atleast 6 characters" class="form-control" />
-                                      <?php echo form_error('password'); ?>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <label for="confPassword">Confirm Password</label>
-                                      <input type="password" id="confPassword" name="confPassword" placeholder="Confirm Password" class="form-control" />
-                                      <?php echo form_error('confPassword'); ?>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-12">
-                                      <hr>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-12">
-                                      <button type="submit" class="btn btn-flat btn-primary pull-right">Submit</button>
-                                    </div>
-                                  </div>
-                                </ul>
-                              </td>
-                            </tr>
-                          </form>
+                <tr>
+                  <td width="40%" valign="top">
+                    <img src="<?php echo base_url('bootstrap/images/'.$row->image.''); ?>" width="250" height="200" /><br>
+                    <input type="file" name="image"/>
+                  </td>
+                  <td valign="top">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label for="name"> Name</label>
+                        <input type="text" id="name" name="name" value="<?php echo $row->name; ?>" class="form-control" />
+                        <?php echo form_error('name'); ?>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="Age">Age</label>
+                        <div class="input-group">
+                          <!-- <span class="input-group-addon"><i class="fa fa-usd"></i></span> -->
+                          <input type="text" id="age" name="age" value="<?php echo $row->age; ?>" class="form-control">
+                          <?php echo form_error('age'); ?>
+                          <!-- <span class="input-group-addon">.00</span> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <br>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label for="Sex">Sex</label>
+                        <select name="Sex" class="form-control">
+                          <option value="<?php echo $row->sex; ?>"><?php echo $row->sex; ?></option>
+                          <!-- <?php  
+                           // foreach($admin->admin_model->getCategories() as $cat) 
+                             //if($cat->Category_name == $row->Category_name)
+                              {
+                             //   continue;
+                              }
+                             // else
+                              {
+                              // echo '<option value="'.$cat->Category_ID.'">'.$cat->Category_name.'</option>';
+                              } 
+                          ?>-->
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="civil_status">Civil Status</label>
+                        <select name="civil_status" class="form-control">
+                          <option value="<?php echo $row->civil_status; ?>"><?php echo $row->civil_status; ?></option>
+                          <!-- <?php
+                            //foreach($admin->admin_model->getBrands() as $brand) 
+                              //if($brand->Brand_name == $row->Brand_name)
+                              {
+                                //continue;
+                              }
+                             //else
+                              {
+                               //echo '<option value="'.$brand->Brand_ID.'">'.$brand->Brand_name.'</option>';
+                              }
+                          ?>  -->
+                        </select><br>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label for="pob">Place of Birth</label>
+                        <input type="text" id="pob" value="<?php echo $row->pob; ?>" name="pob" class="form-control" />
+                         <?php echo form_error('pob'); ?><hr> 
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="residence">Residence</label>
+                        <textarea style="resize:none;" id="residence" name="residence" class="form-control"><?php echo $row->residence; ?></textarea>
+                        <?php echo form_error('residence'); ?><br>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button class="btn btn-primary btn-flat pull-right">Update</button>
+
+                      </div>
+                    </div>
+                  </td>
+                </tr>
               </table>
-            </ul>
+            </form>
+            <?php } ?>
+          </ul>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
       <footer class="main-footer">

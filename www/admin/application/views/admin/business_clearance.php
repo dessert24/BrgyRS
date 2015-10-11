@@ -28,9 +28,9 @@
           <div class="row">
            
             <div class="col-md-4 pull-right">
-              <form action="<?php echo base_url('index.php/admin/productSearch'); ?>" method="POST">
+              <form action="<?php echo base_url('index.php/admin/BusClearsearch'); ?>" method="POST">
                 <div class="input-group">
-                  <input type="text" name="productName" class="form-control" placeholder="Search Product"/>
+                  <input type="text" name="name" class="form-control" placeholder="Search"/>
                   <span class="input-group-btn">
                     <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                   </span>

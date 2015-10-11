@@ -9,7 +9,7 @@
     <div class="wrapper">
     <?php require 'header.php'; require 'aside.php'; ?>      
       <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
+        <!-- Content Header-->
         <section class="content-header">
           <h1>
             <i class="fa fa-gears" style="margin-right:5px;"></i>Users

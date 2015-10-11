@@ -43,21 +43,17 @@
               <ul class="treeview-menu">
                <li><a href="<?php echo base_url('index.php/admin/Adminusers'); ?>"><i class="fa fa-users"></i>Admin Users<span class="label label-success pull-right"><?php echo count($admin->admin_model->getAdminUsers()); ?></span></a></li>
                <li><a href="<?php echo base_url('index.php/admin/users'); ?>"><i class="fa fa-users"></i>Customer Users<span class="label label-success pull-right"><?php echo count($admin->admin_model->getUsers()); ?></span></a></li>
-               <?php //foreach($admin->admin_model->getCategories() as $cat) { ?>
-                <!-- <li><a href="<?php //echo base_url('index.php/admin/getProductsByCategory/'.$cat->Category_ID.''); ?>"><i class="fa fa-circle-o"></i><?php //echo $cat->Category_name; ?></a></li> -->
-              <?php// } ?>
+              
               </ul>
             </li>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-files-o"></i>
                 <span>Graphs</span>
-                <!-- <span class="label label-primary pull-right"><?php //echo count($admin->admin_model->getBrands()); ?></span> -->
+                
               </a>
               <ul class="treeview-menu">
-              <?php //foreach($admin->admin_model->getBrands() as $brand) { ?>
-                <!-- <li><a href="<?php //echo base_url('index.php/admin/getProductsByBrand/'.$brand->Brand_ID.''); ?>"><i class="fa fa-circle-o"></i><?php //echo $brand->Brand_name; ?></a></li> -->
-              <?php //} ?>
+             
               </ul>
             </li>
           

@@ -12,135 +12,96 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            <i class="fa fa-gears" style="margin-right:5px;"></i>Users
-            <small>New User</small>
+            <i class="fa fa-users" style="margin-right:5px;"></i>Users
+            <small>Listing</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">New User</li>
+            <li class="active">Users</li>
           </ol>
         </section><br>
         <?php if(!empty($response)) echo $response; ?>
 
         <!-- Main content -->
-        <a href="<?php echo base_url('index.php/admin/users'); ?>"><i class="fa fa-arrow-left pull-right" style="margin-right:5px;"></i></a><br><br>
+        <a href="<?php echo base_url('index.php/admin/AdminUsers'); ?>"><i class="fa fa-arrow-left pull-right" style="margin-right:5px;"> Back</i></a><br><br>
         <section class="content">
           <div class="row">
             <div class="col-md-8">
-              <h4 class="box-title">New User</h4><br><br>
+              <h4 class="box-title">Search Results</h4>
+              <a href="<?php echo base_url('index.php/admin/newUser'); ?>"><small><i class="fa fa-plus" style="margin-right:5px;"></i>User</small></a>
+            </div>
+            <div class="col-md-4 pull-right">
+              <form action="<?php echo base_url('index.php/admin/accountSearch'); ?>" method="POST">
+                <div class="input-group">
+                  <input type="text" name="name" class="form-control" placeholder="Search Name"/>
+                  <span class="input-group-btn">
+                    <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                  </span>
+                </div>
+              </form>
             </div>
           </div>
-            <ul>
-              <table width="100%">
-                          <form action="<?php echo base_url('index.php/admin/addUser'); ?>" method="POST" enctype="multipart/form-data">
-                            <tr>
-                              <td valign="top">
-                                <div class="row">
-                                  <div class="col-md-12">
-                                    <img src="<?php echo base_url('bootstrap/images/dummy.png'); ?>" width="200" height="200">
-                                    <input type="file" name="userFile" required/>
-                                  </div>
-                                </div>
-                              </td>
-                              <td valign="top">
-                                <ul>
-                                  <div class="row">
-                                    <div class="col-md-12">
-                                      <h4 class="box-title">Personal Informations</h4><hr>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-4">
-                                      <label for="firstName">Firstname</label>
-                                      <input type="text" name="firstName" value="<?php echo $post['firstName']; ?>" class="form-control" />
-                                      <?php echo form_error('firstName'); ?>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <label for="middleName">Middlename</label>
-                                      <input type="text" name="middleName" value="<?php echo $post['middleName']; ?>" class="form-control" />
-                                      <?php echo form_error('middleName'); ?>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <label for="lastName">Lastname</label>
-                                      <input type="text" name="lastName" value="<?php echo $post['lastName']; ?>" class="form-control" /><br>
-                                      <?php echo form_error('lastName'); ?>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <label for="gender">Gender</label>
-                                      <select name="gender" id="gender" class="form-control">
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                        <option>Other</option>
-                                      </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <label for="type">Type</label>
-                                      <select name="type" id="type" class="form-control">
-                                        <option>Admin</option>
-                                        <option>Customer</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-12">
-                                      <br>
-                                      <h4 class="box-title">Contact Informations</h4><hr>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-4">
-                                      <label for="emailAdd">Email Address</label>
-                                      <input type="text" id="emailAdd" value="<?php echo $post['emailAdd']; ?>" name="emailAdd" class="form-control" />
-                                      <?php echo form_error('emailAdd'); ?>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <label for="contactNumber">Contact Number</label>
-                                      <input type="text" id="contactNumber" value="<?php echo $post['contactNumber']; ?>" name="contactNumber" class="form-control" />
-                                      <?php echo form_error('contactNumber'); ?>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <label for="homeAdd">Home Address</label>
-                                      <input type="text" id="homeAdd" value="<?php echo $post['homeAdd']; ?>" name="homeAdd" class="form-control" />
-                                      <?php echo form_error('homeAdd'); ?>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-12">
-                                      <h4 class="box-title">Account Security</h4><hr>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-4">
-                                      <label for="password">Password</label>
-                                      <input type="password" id="password" name="password" placeholder="Atleast 6 characters" class="form-control" />
-                                      <?php echo form_error('password'); ?>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <label for="confPassword">Confirm Password</label>
-                                      <input type="password" id="confPassword" name="confPassword" placeholder="Confirm Password" class="form-control" />
-                                      <?php echo form_error('confPassword'); ?>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-12">
-                                      <hr>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-12">
-                                      <button type="submit" class="btn btn-flat btn-primary pull-right">Submit</button>
-                                    </div>
-                                  </div>
-                                </ul>
-                              </td>
-                            </tr>
-                          </form>
-              </table>
-            </ul>
+          <div class="row">
+            <div class="col-md-12">
+              <hr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <br><br>
+            </div>
+          </div>
+          <?php 
+            if(count($admin->admin_model->getSearchAdminUsers($data['name'])) == 0)
+            {
+              echo '<center>No matches found .</center>';
+            }
+            else
+            {
+              ?>
+                <ul>
+                  <table width="100%">
+                    <tr>
+                      <td align="center"><b>Account ID</b></td>
+                      <td align="center"><b>Fullname</b></td>
+                      <td align="center"><b>Gender</b></td>
+                      <td align="center"><b>Status</b></td>
+                      <td align="center"><b>Type</b></td>
+                      <td align="center"><b>Actions</b></td>
+                    </tr>
+                    <tr><td><div class="row"></div></td></tr>
+                    <?php foreach($admin->admin_model->getSearchAdminUsers($data['name']) as $row) { ?>
+                    <tr><td><br></td></tr>
+                    <tr>
+                      <td align="center"><?php echo $row->Account_ID; ?></td>
+                      <td align="center"><?php echo $row->Firstname .' '. $row->Lastname; ?></td>
+                      <td align="center"><?php echo $row->Gender; ?></td>
+                      <td align="center"><?php echo $row->Status; ?></td>
+                      <td align="center"><?php echo $row->Type; ?></td>
+                      <td align="center">
+                        <a href="<?php echo base_url('index.php/admin/updateUser/'.$row->Account_ID.''); ?>"><i class="fa fa-edit" style="margin-right:10px;"></i></a>
+                        <?php 
+                          if($row->Status == 'Active')
+                          {
+                            $status = 'Inactive';
+                            echo '<a href="'.base_url('index.php/admin/updateAccountStatus/'.$row->Account_ID.'/'.$status.'').'"><i class="fa fa-toggle-on" style="margin-right:5px;"></i></a>';
+                          }
+                          else
+                          {
+                            $status = 'Active';
+                            echo '<a href="'.base_url('index.php/admin/updateAccountStatus/'.$row->Account_ID.'/'.$status.'').'"><i class="fa fa-toggle-off" style="margin-right:5px;"></i></a>';
+                          }
+                        ?>
+                      </td>
+                    </tr>
+                  <?php } ?>
+                  </table>
+                </ul>
+              <?php } ?>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
       <footer class="main-footer">
-        <strong>Copyright &copy; 2015-2016 <a href="">Barangay Registration</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2015-2016 <a href="">Store Tech</a>.</strong> All rights reserved.
       </footer>
       
       <!-- Control Sidebar -->      

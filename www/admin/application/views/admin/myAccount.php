@@ -148,7 +148,7 @@
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
       <footer class="main-footer">
-        <strong>Copyright &copy; 2015-2016 <a href="">Store Tech</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2015-2016 <a href="">Barangay Registration</a>.</strong> All rights reserved.
       </footer>
       
       <!-- Control Sidebar -->      

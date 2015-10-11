@@ -30,7 +30,7 @@
               <a href="<?php echo base_url('index.php/admin/newUser'); ?>"><small><i class="fa fa-plus" style="margin-right:5px;"></i>User</small></a>
             </div>
             <div class="col-md-4 pull-right">
-              <form action="<?php echo base_url('index.php/admin/accountSearch'); ?>" method="POST">
+              <form action="<?php echo base_url('index.php/admin/customerSearch'); ?>" method="POST">
                 <div class="input-group">
                   <input type="text" name="name" class="form-control" placeholder="Search Name"/>
                   <span class="input-group-btn">

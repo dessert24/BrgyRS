@@ -1,3 +1,4 @@
+<!-- Scripts -->
 <!-- jQuery 2.1.4 -->
 <script src="<?php echo base_url('bootstrap/plugins/jQuery/jQuery-2.1.4.min.js'); ?>"></script>
 <!-- jQuery UI 1.11.2 -->

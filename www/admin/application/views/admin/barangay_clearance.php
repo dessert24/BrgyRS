@@ -27,10 +27,10 @@
         <section class="content">
           <div class="row">
            
-            <div class="col-md-4 pull-right">
-              <form action="<?php echo base_url('index.php/admin/productSearch'); ?>" method="POST">
+             <div class="col-md-4 pull-right">
+              <form action="<?php echo base_url('index.php/admin/BCsearch'); ?>" method="POST">
                 <div class="input-group">
-                  <input type="text" name="productName" class="form-control" placeholder="Search Product"/>
+                  <input type="text" name="name" class="form-control" placeholder="Search"/>
                   <span class="input-group-btn">
                     <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                   </span>
@@ -51,7 +51,7 @@
             </div>
           </div>
           <?php 
-            if(count($admin->admin_model->getProducts()) == 0)
+            if(count($admin->admin_model->getBarangay()) == 0)
             {
               echo "<center>Empty .</center>";
             }
@@ -83,6 +83,7 @@
                       <td align="center"><?php echo $row->residence; ?></td>
                       <td align="center"><?php echo $row->purpose; ?></td>
                       <td align="center">
+                        <a href="<?php echo base_url('index.php/admin/update/'.$row->id.''); ?>"><i class="fa fa-edit" style="margin-right:10px;"></i></a>
                         <a href="<?php echo base_url('index.php/admin/deleteProduct/'.$row->id.''); ?>"><i class="fa fa-trash" style="margin-right:5px;"></i></a>
                       </td>
                     </tr>

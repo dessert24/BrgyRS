@@ -8,43 +8,23 @@
 			parent::__construct();
 		}
 
-	// Get data
-		public function getAccountDetails($accountID)
-		{
-			return $this->db->select('*')->from('Accounts')->where('Account_ID' , $accountID)->get()->result();
-		}
+	
 
+
+//**************************************Barngay Clearance*************************************************
 		public function getProducts()
 		{
 			return $this->db->select('*')->from('barangay_clearance')->get()->result();
 		}
 
-		public function getbusinessClearance()
+			public function getBarangay_clearance_search($name)
 		{
-			return $this->db->select('*')->from('business_clearance')->get()->result();
-		}
-
-		public function getbrgypermit()
-		{
-			return $this->db->select('*')->from('brgy_permit')->get()->result();
-		}
-
-		public function getcomplaints()
-		{
-			return $this->db->select('*')->from('complaints')->get()->result();
+			return $this->db->query("SELECT * FROM barangay_clearance WHERE name LIKE '%".$name."%'")->result();
 		}
 
 		public function getBrgyClearanceDetails($id)
 		{
 			return $this->db->select('*')->from('barangay_clearance')->where('id' , $id)->get()->result();
-		}
-
-		// Get data
-// DELETE
-
-		public function deleteBusinessClearance($id)
-		{
-			$this->db->query('DELETE FROM business_clearance WHERE id = '.$id.'');
 		}
 
 
@@ -53,17 +33,99 @@
 			$this->db->query('DELETE FROM barangay_clearance WHERE id = '.$id.'');
 		}
 
-		public function deleteComplaints($id)
+		public function BCUpdate($id , $data)
 		{
-			$this->db->query('DELETE FROM complaints WHERE id = '.$id.'');
+			if(empty($data['result']))
+			{
+				$details = array(
+					'name' => $data['name'],
+					'age' => $data['age'],
+					'sex' => $data['sex'],
+					'civil_status' => $data['civil_status'],
+					'pob' => $data['pob'],
+					'residence' => $data['residence'],
+					'purpose' => $data['purpose'],
+				);
+
+				$this->db->where('id' , $id);
+				$this->db->update('barangay_clearance' , $details);
+			}
+			else
+			{
+				$details = array(
+					'name' => $data['result']['name'],
+					'age' => $data['result']['age'],
+					'sex' => $data['result']['sex'],
+					'civil_status' => $data['result']['civil_status'],
+					'pob' => $data['result']['pob'],
+					'residence' => $data['result']['residence'],
+					'purpose' => $data['result']['purpose'],
+					'image' => $data['image']
+				);
+
+				$this->db->where('id' , $id);
+				$this->db->update('barangay_clearance' , $details);
+			}
 		}
+		
+//**************************************Barngay Clearance*************************************************
+
+//**************************************Barngay Permit*************************************************
+
+
+		public function getbrgypermit()
+		{
+			return $this->db->select('*')->from('brgy_permit')->get()->result();
+		}
+
+			public function getBarangay_permit_search($name)
+		{
+			return $this->db->query("SELECT * FROM brgy_permit WHERE name LIKE '%".$name."%'")->result();
+		}
+
 
 		public function deleteBrgyPermit($id)
 		{
 			$this->db->query('DELETE FROM brgy_permit WHERE id = '.$id.'');
 		}
 
-// DELETE
+
+//***************************************Barngay Permit*************************************************
+
+//**************************************Business Clearance*************************************************
+		public function getbusinessClearance()
+		{
+			return $this->db->select('*')->from('business_clearance')->get()->result();
+		}
+
+		public function getBusiness_clearance_search($name)
+		{
+			return $this->db->query("SELECT * FROM business_clearance WHERE name LIKE '%".$name."%'")->result();
+		}
+
+		public function deleteBusinessClearance($id)
+		{
+			$this->db->query('DELETE FROM business_clearance WHERE id = '.$id.'');
+		}
+
+//**************************************Business Clearance*************************************************
+
+//**************************************Complaints*************************************************
+	public function getcomplaints()
+		{
+			return $this->db->select('*')->from('complaints')->get()->result();
+		}
+	public function getComplaints_search($id)
+		{
+			return $this->db->query("SELECT * FROM complaints WHERE id LIKE '%".$id."%'")->result();
+		}
+
+	public function deleteComplaints($id)
+		{
+			$this->db->query('DELETE FROM complaints WHERE id = '.$id.'');
+		}	
+//**************************************Complaints*************************************************
+
 
 // Get Users
 		public function getAdminUsers()
@@ -77,21 +139,27 @@
 			return $this->db->query('SELECT * FROM customers_auth WHERE uid  ')->result();
 		}
 
-		public function getSearchUsers($name)
-		{
+		 public function getSearchAdminUsers($name)
+		 {
 			return $this->db->query("SELECT * FROM Accounts WHERE Firstname LIKE '%".$name."%' OR Lastname LIKE '%".$name."%' AND Account_ID > 2015101001")->result();
-		}
+		 }
+
+		  public function getSearchUsers($name)
+		 {
+			return $this->db->query("SELECT * FROM customers_auth WHERE name LIKE '%".$name."%' ")->result();
+		 }
+
 // Get Users
 
 		
 
-		public function getProductSearch($name)
-		{
-			return $this->db->query("SELECT * FROM barangay_clearance WHERE name LIKE '%".$name."%'")->result();
-		}
 
 	// USER INFO
 		
+		public function getAccountDetails($accountID)
+		{
+			return $this->db->select('*')->from('Accounts')->where('Account_ID' , $accountID)->get()->result();
+		}
 
 		public function newAccount($data)
 		{
