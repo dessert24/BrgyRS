@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/brs/www/admin/';
+$config['base_url']	= 'http://localhost/BrgyRS/www/admin/';
 
 /*
 |--------------------------------------------------------------------------

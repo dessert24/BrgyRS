@@ -51,7 +51,7 @@
             </div>
           </div>
           <?php 
-            if(count($admin->admin_model->getBarangay()) == 0)
+            if(count($admin->admin_model->getProducts()) == 0)
             {
               echo "<center>Empty .</center>";
             }

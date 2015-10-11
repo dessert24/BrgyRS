@@ -64,7 +64,7 @@ starter.controller('PopupCtrl',function($scope, $ionicPopup, $timeout, $http, $s
  $scope.todos = [];
   $scope.form_barangay_clearance = {};
   
-  $http.get('http://localhost/BRS/www/myApi/todos').then(function(response) { console.log(response); $scope.todos = response.data;}, function(response) { console.log(response);
+  $http.get('http://localhost/BrgyRS/www/myApi/todos').then(function(response) { console.log(response); $scope.todos = response.data;}, function(response) { console.log(response);
       // called asynchronously if an error occurs
       // or server returns response with an error status.
     });
@@ -74,7 +74,7 @@ starter.controller('PopupCtrl',function($scope, $ionicPopup, $timeout, $http, $s
       $scope.form_barangay_clearance = {};
     }
     else{
-      $http.post('http://localhost/BRS/www/myApi/todos', $scope.form_barangay_clearance).
+      $http.post('http://localhost/BrgyRS/www/myApi/todos', $scope.form_barangay_clearance).
         then(function(response) {
           console.log(response);
           $scope.form_barangay_clearance.id = response.data.id;
@@ -111,7 +111,7 @@ starter.controller('business_clearance',function($scope, $ionicPopup, $timeout, 
   $scope.todos = [];
   $scope.formData = {};
   
-  $http.get('http://localhost/BRS/www/myApi/todos').then(function(response) { console.log(response); $scope.todos = response.data;}, function(response) { console.log(response);
+  $http.get('http://localhost/BrgyRS/www/myApi/todos').then(function(response) { console.log(response); $scope.todos = response.data;}, function(response) { console.log(response);
       // called asynchronously if an error occurs
       // or server returns response with an error status.
     });
@@ -121,7 +121,7 @@ starter.controller('business_clearance',function($scope, $ionicPopup, $timeout, 
       $scope.formData = {};
     }
     else{
-      $http.post('http://localhost/BRS/www/myApi/todos', $scope.formData).
+      $http.post('http://localhost/BrgyRS/www/myApi/todos', $scope.formData).
         then(function(response) {
           console.log(response);
           $scope.formData.id = response.data.id;
